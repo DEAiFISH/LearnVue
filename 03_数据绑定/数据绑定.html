@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <label>
+        单项数据绑定：
+        <input type="text" :value="name"/>
+    </label><br>
+    <label>
+        双项数据绑定：
+        <input type="text" v-model:value="name"/>
+    </label><br>
+    <!--
+        v-model 只能应用在表单类元素
+    -->
+</div>
+<script type="text/javascript">
+    new Vue({
+        el:'#root',
+        data:{
+            name: '晁祥翔'
+        }
+    })
+</script>
+</body>
+</html>

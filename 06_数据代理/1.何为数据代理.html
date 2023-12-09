@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.何为数据代理.html</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+
+</div>
+<script type="text/javascript">
+    let obj = {x:100}
+    let obj2 = {x:200}
+
+    Object.defineProperty(obj2,'x',{
+        get() {
+            return obj.x;
+        },
+        set(v) {
+            obj.x = v
+        }
+    })
+</script>
+</body>
+</html>

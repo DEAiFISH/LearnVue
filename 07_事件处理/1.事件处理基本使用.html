@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.事件处理基本使用.html</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2>欢迎来到{{name}}学习</h2>
+    <button v-on:click="showInfo1">点我提示信息（不传参）</button><br>
+    <button @click="showInfo2($event,66)">点我提示信息（传参）</button>
+</div>
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                name: '尚硅谷'
+            }
+        },
+        methods:{
+             showInfo1() {
+                alert("同学你好。")
+            },
+            showInfo2(event,number) {
+                alert(number + ": 同学你好!")
+            }
+        }
+    })
+</script>
+</body>
+</html>

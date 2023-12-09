@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+<h1>别名</h1>
+<ul>
+    <li>回车 ===> enter</li>
+    <li>删除 ===> delete（捕获“删除”键和“退格”键）</li>
+    <li>退出 ===> esc</li>
+    <li>空格 ===> space</li>
+    <li>换行 ===> tab（特殊，必须使用keydown使用）</li>
+    <li>上 ===> up</li>
+    <li>下 ===> down</li>
+    <li>左 ===> left</li>
+    <li>右 ===>  right</li>
+</ul>
+<div id="root">
+    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+
+</div>
+<script>
+    Vue.config.keyCodes.huiche = 13  // 自定义按键别名（不推荐—）
+
+    new Vue({
+        el: '#root',
+        data() {
+            return{}
+        },
+        methods: {
+            showInfo(e) {
+                if(e.keyCode !== 13){
+                    return
+                }
+                console.log(e.target.value)
+            }
+        }
+    })
+</script>
+</body>
+</html>

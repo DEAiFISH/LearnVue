@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.事件处理基本使用.html</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .box1{
+            padding: 5px;
+            background-color: aquamarine;
+            width: 400px;
+        }
+        .box2{
+            padding: 5px;
+            background-color: bisque;
+            width: 300px;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+            overflow: auto;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <h2>欢迎来到{{name}}学习</h2>
+    <hr>
+    <h3>.prevent（阻止默认事件）</h3>
+    <a href="https://www.baidu.com" @click.prevent="showInfo">点我提示信息（阻止默认事件）</a>
+    <hr>
+    <h3>.stop（阻止冒泡）</h3>
+    <div @click="showInfo">
+        <button @click.stop="showInfo">点我提示信息</button>
+    </div>
+    <hr>
+    <h3>.once（事件只触发一次）</h3>
+    <button @click.once="showInfo">点我提示信息</button>
+    <hr>
+    <h3>.capture（使用事件的捕获模式）</h3>
+    <div class="box1"  @click.capture="showMsg(1)">
+        div1
+        <div class="box2" @click="showMsg(2)">
+            div2
+        </div>
+    </div>
+<hr>
+    <h3>.self（只有event.target是当前操作的元素时才触发事件）</h3>
+    <div @click.self="showInfo">
+        <button @click="showInfo">点我提示信息</button>
+    </div>
+    <hr>
+    <h3>.passive（事件的默认行为立即执行，无需等待事件回调执行完毕）</h3>
+    <ul @scroll.passive="demo" class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+</div>
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                name: '尚硅谷'
+            }
+        },
+        methods: {
+            showInfo() {
+                alert("同学你好。")
+            },
+            showMsg(msg){
+                alert(msg)
+            },
+            demo(){
+                for (let i = 0; i < 1000000; i++) {
+                    console.log("#")
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

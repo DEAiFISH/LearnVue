@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <h1>差值语法</h1>
+    <h3>Hello,{{name}}</h3>
+    <hr>
+    <h1>指令语法 </h1>
+    <a v-bind:href="school.url">v-bind - 点我去{{school.name}}学习1</a><br>
+    <a :href="school.url">v-bind ====> : (简写) 点我去{{school.name}}学习2</a>
+</div>
+<script type="text/javascript">
+    //创建Vue实例
+    new Vue({
+        el:"#root",  //el用于指定当前Vue实例为哪个同期服务
+        data:{  //dada中用于储存数据，数据供el说指定的容器去使用，值我们暂时先写成一个对象
+            school:{
+                name:'尚硅谷',
+                url:'https://www.bilibili.com/video/BV1Zy4y1K7SH'
+            },
+            name:'cxx'
+        }
+    })
+
+</script>
+</body>
+</html>
