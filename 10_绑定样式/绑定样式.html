@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定样式</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        .basic {
+            border: 1px solid;
+            width: 400px;
+            height: 300px;
+        }
+
+        .normal {
+            background-color: cadetblue;
+        }
+
+        .happy {
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <!--绑定class样式--字符串写法，适用于样式类名不确定，需要动态指定 -->
+    <div class="basic" :class="mood" @click="changeClazz">{{name}}</div>
+    <br><br>
+    <!--绑定class样式--数组写法，适用于样式个数不确定，类名也不确定 -->
+    <div class="basic" :class="classArr" @click="changeClazz">{{name}}</div>
+    <br><br>
+    <!--绑定class样式--对象写法，适用于样式个数、名字确定，但是动态决定用不用 -->
+    <div class="basic" :class="classObj" @click="changeClazz">{{name}}</div>
+    <br><br>
+
+    <!--绑定style样式-->
+    <div class="basic" :style="styleObj">{{name}}</div>
+    <br><br>
+</div>
+
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                name: "尚硅谷",
+                mood: 'normal',
+                classArr: ['atguigu1', 'atguigu2', 'atguigu3'],
+                classObj: {
+                    'atguigu1': false,
+                    'atguigu2': false
+                },
+                styleObj: {
+                    fontSize: '40px',
+                    color: 'red',
+                    backgroundColor: 'orange'
+                }
+            }
+        },
+        methods: {
+            changeClazz() {
+                this.a = 'happy'
+            }
+        }
+    })
+</script>
+</body>
+</html>

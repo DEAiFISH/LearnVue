@@ -19,21 +19,21 @@
 </div>
 <script>
     new Vue({
-        el:"#root",
-        data(){
-            return{
-                firstName:"张",
-                lastName:"三"
+        el: "#root",
+        data() {
+            return {
+                firstName: "张",
+                lastName: "三"
             }
         },
-        computed:{
-            fullName:{
+        computed: {
+            fullName: {
                 // get当有人读取fullName时，就会调用get
                 // get调用的时机？ 1.初次读取fullName时 2.所依赖的数据发生变化时
-                get(){
+                get() {
                     return this.firstName + "-" + this.lastName
                 },
-                set(){
+                set() {
 
                 }
             }

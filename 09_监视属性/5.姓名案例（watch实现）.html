@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>姓名案例</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<!--
+    1.所有vue管理的函数最好写成普通函数
+    2.所有不被vue管理的函数（定时器的回调函数，ajax的回调函数等），最好写成箭头函数
+-->
+<div id="root">
+    <label>
+        姓：
+        <input type="text" v-model="firstName">
+    </label><br>
+    <label>
+        名：
+        <input type="text" v-model="lastName">
+    </label><br>
+    全名：<span>{{fullName}}</span>
+</div>
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                firstName: "张",
+                lastName: "三",
+                fullName: '张-三'
+            }
+        },
+        watch: {
+            // 监视可以实现异步任务，计算属性不行
+            firstName(newValue) {
+                setTimeout(() => { // 一定是箭头函数
+                    this.fullName = newValue + '-' + this.lastName
+                }, 1000)
+            },
+            lastName(newValue) {
+                this.fullName = this.firstName + '-' + newValue
+            }
+        }
+    })
+</script>
+</body>
+</html>

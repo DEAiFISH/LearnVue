@@ -17,7 +17,7 @@
     <li>上 ===> up</li>
     <li>下 ===> down</li>
     <li>左 ===> left</li>
-    <li>右 ===>  right</li>
+    <li>右 ===> right</li>
 </ul>
 <div id="root">
     <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
@@ -29,11 +29,11 @@
     new Vue({
         el: '#root',
         data() {
-            return{}
+            return {}
         },
         methods: {
             showInfo(e) {
-                if(e.keyCode !== 13){
+                if (e.keyCode !== 13) {
                     return
                 }
                 console.log(e.target.value)
