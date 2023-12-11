@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--用 v-show-->
+    <h2 v-show="true">欢迎{{name}}</h2>
+    <h2 v-show="1 === 1">欢迎{{name}}</h2>
+
+    <!--用 v-if-->
+    <h2 v-if="true">欢迎{{name}}</h2>
+    <h2 v-if="1 === 1">欢迎{{name}}</h2>
+
+    <!--
+        必须挨在一起使用，不能被打断
+        v-if
+        v-else-if
+        v-else
+    -->
+
+    <hr>
+    <h3>n的值为：{{n}}</h3>
+    <button @click="n++">点我给n+1</button>
+    <div v-show="n === 1"> 1st </div>
+    <div v-show="n === 2"> 2nd </div>
+    <div v-show="n === 3"> 3rd </div>
+    <div v-show="n === 4"> 4th </div>
+
+    <hr>
+    <!--template 模板标签，不会破坏结构，只能跟if使用-->
+    <template v-if="n ===1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </template>
+
+</div>
+<script>
+    new Vue({
+        el:'#root',
+        data(){
+            return{
+                name:'cxx',
+                n:0
+            }
+        }
+    })
+</script>
+</body>
+</html>

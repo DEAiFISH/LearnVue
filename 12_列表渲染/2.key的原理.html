@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本列表</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!--    key选择对象的唯一标识    -->
+<div id="root">
+    <h2>人员列表</h2>
+    <button @click="add">添加一个老刘</button>
+    <ul>
+        <li v-for="p in persons" :key="p.id">
+            {{p.name}}-{{p.age}}
+            <input type="text">
+        </li>
+    </ul>
+    <hr>
+    <img :src="src" style="width: 800px">
+
+</div>
+
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                persons: [
+                    {
+                        id: '001',
+                        name: '张三',
+                        age: 18
+                    },
+                    {
+                        id: '002',
+                        name: '李四',
+                        age: 19
+                    },
+                    {
+                        id: '003',
+                        name: '王五',
+                        age: 20
+                    }
+                ],
+                src: '../img/列表渲染-key的作用.jpeg'
+            }
+        },
+        methods: {
+            add() {
+                const p = {id: '004', name: '老刘', age: '40'}
+                this.persons.unshift(p)
+            }
+        }
+    })
+</script>
+</body>
+</html>
