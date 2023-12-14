@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收集表单数据</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <form @submit.prevent="demo">
+            <label for="account">账号：</label>
+            <input type="text" id="account" v-model.trim="account"><br><br>
+            <label for="password">密码：</label>
+            <input type="password" id="password" v-model="password"><br><br>
+            <label for="age">年龄：</label>
+            <input type="number" id="age" v-model.number="age"><br><br>
+            性别：
+            男<input type="radio" name="sex" value="male" v-model="sex">
+            女<input type="radio" name="sex" value="female" v-model="sex"><br><br>
+            爱好：
+            学习<input type="checkbox" value="study" v-model="hobby">
+            打游戏<input type="checkbox" value="game" v-model="hobby">
+            吃饭<input type="checkbox" value="eat" v-model="hobby"><br><br>
+            所属地区：
+            <select v-model="city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="guangdong">广东</option>
+                <option value="shenzhen">深圳</option>
+            </select><br><br>
+            其他信息:<textarea v-model.lazy="other"></textarea><br><br>
+            <input type="checkbox" v-model="agree">同意并接受<a href="https://www.baidu.com">《用户协议》</a><br><br>
+            <button>提交</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                    account: '',
+                    password: '',
+                    sex: '',
+                    hobby: [],
+                    city: '',
+                    other: '',
+                    agree: '',
+                    age: ''
+                }
+            },
+            methods: {
+                demo() {
+                    console.log(JSON.stringify(this._data))
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
