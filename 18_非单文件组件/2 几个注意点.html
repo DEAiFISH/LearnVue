@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>几个注意点</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <school></school>
+        <student></student>
+    </div>
+    <script>
+        // 定义组件
+        const s = Vue.extend({
+            template: `
+            <div>
+                <h2>学校名称:{{name}}</h2>    
+                <h2>学校地址:{{address}}</h2>
+            </div>
+            `,
+            name: 'xuexiao',
+            data() {
+                return {
+                    name: '北京大学',
+                    address: '北京'
+                }
+            },
+        })
+
+        // 定义组件的简写方式
+        const student = {
+            template: `
+            <div>
+                <h2>学生名称:{{name}}</h2>    
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'Tom',
+                }
+            },
+        }
+
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+
+                }
+            },
+            // 局部注册组件
+            components: {
+                school: s,
+                student
+            }
+        })
+    </script>
+</body>
+
+</html>
