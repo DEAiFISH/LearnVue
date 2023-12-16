@@ -6,7 +6,7 @@
 </template>
 <script>
     // 引入组件
-    import School from './School'
+    import School from './School.vue'
     import Student from './Student'
 
     export default {
