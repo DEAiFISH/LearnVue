@@ -2,24 +2,26 @@
     <div class="person">
         <h2>一辆{{ car.brand }}车，价值{{ car.price }}</h2>
         <button @click="changePrice">修改价格</button>
-        <button @click="changeCar">修改汽车</button>
         <ul>
             <li v-for="game in games" :key="game.id">{{ game.name }}</li>
         </ul>
         <button @click="changeFirstGame">修改第一个游戏</button>
+        <hr>
+        <h2>嵌套对象：{{ obj.a.b.c }}</h2>
+        <button @click="obj.a.b.c++">修改嵌套对象</button>
     </div>
     <br>
 </template>
 
 
 <script lang="ts" setup name="Person">
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
 // 数据
-let car = ref({
+let car = reactive({
     brand: '奔驰',
     price: 1000000
 });
-let games = ref([
+let games = reactive([
     { id: 'aysdytfsatr01', name: '王者荣耀' },
     { id: 'aysdytfsatr02', name: '和平精英' },
     { id: 'aysdytfsatr03', name: '英雄联盟' },
@@ -27,35 +29,25 @@ let games = ref([
     { id: 'aysdytfsatr05', name: 'QQ飞车' },
 ]);
 
-// reactive 不能包装基本类型的数据
-// let name = reactive('张三');
+let obj = reactive({
+    a : {
+        b: {
+            c: 1
+        }
+    }
+});
 
 console.log(car);
 
 // 方法
 function changePrice() {
-    car.value.price += 10000;
+    car.price += 10000;
 }
 
 function changeFirstGame() {
-    if (games.value[0]) {
-        games.value[0].name = 'DOTA2';
+    if (games[0]) {
+        games[0].name = 'DOTA2';
     }
-}
-function changeCar() {
-    // 若car是reactive对象
-    Object.assign(car , {
-        brand: '奥迪',
-        price: 300000
-    });
-
-    // 若car是ref对象
-    car.value = {
-        brand: '奥迪',
-        price: 300000
-    };
-
-    console.log('@@@@', car);
 }
 
 </script>
