@@ -14,6 +14,9 @@
 
 <script lang="ts" setup name="Person">
 import { ref, reactive } from 'vue';
+// 基本数据 ==========>  ref
+// 对象、数组 ========>  reactive, ref
+// 对象层级较深 ======>  reactive
 // 数据
 let car = ref({
     brand: '奔驰',
