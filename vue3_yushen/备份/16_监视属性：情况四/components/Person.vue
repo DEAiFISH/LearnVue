@@ -1,6 +1,6 @@
 <template>
     <div class="person">
-        <h1>情况五:监视上述所有数据</h1>
+        <h1>情况四:监视的是对象里的属性，那么最好写函数式，注意点：若对象监视的是地址值，需要关注对象内部，需要手动开启深度监视。</h1>
         <h2>姓名：{{ person.name }}</h2>
         <h2>年龄：{{ person.age }}</h2>
         <h2>汽车：{{ person.car.c1 }}、{{ person.car.c2 }}</h2>
@@ -46,12 +46,21 @@ function changeCar(){
     };
 }
 
-// 监视
-watch([()=>{return person.name},()=>{return person.car.c1}],(newValue,oldValue)=>{
+// 监视，情况四：监视【reactive】定义的【对象类型】的数据中的【某个属性】
+// 可以通过getter函数来指定监视某个 基本类型 属性
+watch(() => {return person.name},(newValue,oldValue)=>{
     console.log('nperson.ame被修改了');
     console.log('新值：', newValue);
     console.log('旧值：', oldValue);
 })
+
+// 也可以通过getter函数来指定监视某个 对象类型 属性
+// 但是需要开启深度监视，否则无法监视到该对象内部属性的变化
+watch(()=>{return person.car},(newValue,oldValue)=>{
+    console.log('person.car被修改了');
+    console.log('新值：', newValue);
+    console.log('旧值：', oldValue);
+},{deep: true})
 </script>
 
 <style>
