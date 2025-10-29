@@ -31,11 +31,11 @@ import { defineProps, withDefaults } from 'vue';
 
 
 // 接收 + 限制类型 + 限制必要性 + 制定默认值
-withDefaults(defineProps<{personList?:Persons}>(),{
-    personList:() => [{
-        id:'sdfsdf',
-        name:'第三方淡粉色',
-        age:18
+withDefaults(defineProps<{ personList?: Persons }>(), {
+    personList: () => [{
+        id: 'sdfsdf',
+        name: '第三方淡粉色',
+        age: 18
     }]
 })
 

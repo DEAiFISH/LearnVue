@@ -3,11 +3,10 @@
     <Header></Header>
     <!-- 导航区 -->
     <div class="navigate">
-      <!-- // 路由路径跳转 -->
-      <RouterLink :to="{ path: '/home' }">首页</RouterLink>
+      <RouterLink to="/home" active-class="active">首页</RouterLink>
+      <RouterLink :to="{path:'/home'}">首页</RouterLink>
       <RouterLink to="/new" active-class="active">新闻</RouterLink>
-      <!-- // 路由命名跳转 -->
-      <RouterLink :to="{ name: 'guanyu' }" active-class="active">关于</RouterLink>
+      <RouterLink to="/about" active-class="active">关于</RouterLink>
     </div>
     <!-- 展示区 -->
     <div class="main-content">
