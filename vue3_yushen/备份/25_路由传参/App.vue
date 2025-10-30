@@ -4,10 +4,10 @@
     <!-- 导航区 -->
     <div class="navigate">
       <!-- // 路由路径跳转 -->
-      <RouterLink :to="{ path: '/home' }" replace>首页</RouterLink>
-      <RouterLink to="/new" active-class="active" replace>新闻</RouterLink>
+      <RouterLink :to="{ path: '/home' }">首页</RouterLink>
+      <RouterLink to="/new" active-class="active">新闻</RouterLink>
       <!-- // 路由命名跳转 -->
-      <RouterLink :to="{ name: 'guanyu' }" replace>关于</RouterLink>
+      <RouterLink :to="{ name: 'guanyu' }" active-class="active">关于</RouterLink>
     </div>
     <!-- 展示区 -->
     <div class="main-content">

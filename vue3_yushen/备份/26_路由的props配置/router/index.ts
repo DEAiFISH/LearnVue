@@ -44,10 +44,6 @@ const router = createRouter({
             name:'guanyu',
             path:'/about',
             component:About
-        },
-        {
-            path:'/', // 默认路由，重定向到首页
-            redirect:'/home'
         }
     ]
 })

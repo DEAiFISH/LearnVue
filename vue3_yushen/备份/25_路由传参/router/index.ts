@@ -24,19 +24,8 @@ const router = createRouter({
                 // 嵌套路由
                 {
                     name:'neirong',
-                    path:'detail', // 注意：这里不要加斜杠
-                    component:Detail,
-                    // 第一种写法：将路由参数映射到组件的 props 中
-                    // props:true // 开启 props 传参
-
-                    // 第二种写法：对象写法（只能传死数据）
-                    // props:{id:'001',title:'我是标题',content:'我是内容'}
-
-                    // 第三种写法：函数写法
-                    props(route){
-                        return route.query
-                    }
-
+                    path:'detail/:id/:title/:content?', // 注意：这里不要加斜杠
+                    component:Detail
                 }
             ]
         },
@@ -44,10 +33,6 @@ const router = createRouter({
             name:'guanyu',
             path:'/about',
             component:About
-        },
-        {
-            path:'/', // 默认路由，重定向到首页
-            redirect:'/home'
         }
     ]
 })
