@@ -3,6 +3,7 @@
 		"vite-plugin-vue-setup-extend": "^0.4.0"
 	},
 	"dependencies": {
+		"nanoid": "^5.1.6",
 		"vue-router": "^4.6.3"
 	}
 }
